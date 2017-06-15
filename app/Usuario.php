@@ -1,13 +1,20 @@
 <?php
 
-namespace App;
+namespace Inventario;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class Usuario extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, CanResetPassword;
+
+    /**
+    *
+    *
+    * @var string 
+    **/
+    protected $table = 'ususarios';
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'usuario_id','name', 'email', 'password'
     ];
 
     /**
@@ -26,4 +33,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function areas()
+    {
+        return $this->hasMany('Inventario\Areas');
+    }
 }
