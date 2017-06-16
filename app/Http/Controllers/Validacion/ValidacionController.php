@@ -93,7 +93,7 @@ class ValidacionController extends Controller
 		return view('validacion.recuperar');
 	}
 
-	public function postRecuperar(RecuperarContrasenaRequest $request)
+	public function postRecuperar(ppRecuperarContrasenaRequest $request)
 	{
 		$pregunta = $request->get('pregunta');
 		$respuesta = $request->get('respuesta');
